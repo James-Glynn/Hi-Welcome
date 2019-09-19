@@ -14,12 +14,26 @@ app.showControls = function()
 {
     $('#disconnect').prop('disabled', false);
     $('#startView').hide();
-    $('#controlView').show();
+    $('#controlsView').show();
 }
 
 app.showStart = function()
 {
     $('#disconnect').prop('disabled', true);
     $('#startView').show();
-    $('#controlView').hide();
+    $('#controlsView').hide();
 }
+
+var bar = document.getElementById('sliderRange');
+var output = document.getElementById('value-display');
+output.innerHTML = bar.value;
+
+function showValue()
+{
+    output.innerHTML = bar.value;
+}
+
+// slider.oninput = function()
+// {
+//     output.innerHTML = bar.value;
+// }
