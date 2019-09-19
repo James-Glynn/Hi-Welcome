@@ -36,7 +36,7 @@
 	<script src="cordova.js"></script>
 	<script src="libs/evothings/evothings.js"></script>
 	<script src="libs/evothings/ui/ui.js"></script>
-	<script src="app.js"></script>
+
 	<script src="buttons.js"></script>
 	<script src="libs/evothings/easyble/easyble.js"></script>
 
@@ -45,7 +45,7 @@
 		<h2 style="text-align:center">Robotic Arm Bluetooth</h2>
 		<img class="center" style="width:50%" src="./ui/images/walle.png" alt="robot arm" id='wall-e-img'>
 	
-		<button class="button green" id='start-scan' style='width: 100%;' onclick="app.connect()"> Start </button>
+		<button class="button green" id='start-scan' style='width: 100%;' onclick='app.connect()'> Start </button>
 	</div>
 
 	<!-- CONTROL PANEL -->
@@ -104,6 +104,9 @@
 		</div>
 
 	</div>
+
+	<script src="app.js"></script>
+
 </body>
 
 </html>

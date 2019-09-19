@@ -12,7 +12,7 @@ var app = {
     CHARACTERISTIC_UUID : "",
 }
 //Our device address is:
-app.device.address = '4C:24:98:30:46:B8';
+device.address = '4C:24:98:30:46:B8';
 
 app.SERVICE_UUID='0000ffe0-0000-1000-8000-00805f9b34fb';
 app.CHARACTERISTIC_UUID='0000ffe1-0000-1000-8000-00805f9b34fb';
@@ -81,8 +81,8 @@ app.disconnect = function(errorMessage) {
 */    
 function scanSuccess(device)
 {
-    console.log('Scan successful: Found' + device.name + " " + device.address);
-    if(device.name != null && device.address === address)
+    console.log('Scan successful: Found ' + device.name + " " + device.address);
+    if(device.name != null && device.address == address)
     {
         console.log('Scan successful: Found' + device.name);
         device.connect(connectSuccess,connectFailure);
