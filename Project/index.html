@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Orbitron&display=swap" rel="stylesheet">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, user-scalable=no,
+		shrink-to-fit=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+
+	<title>Robotic Arm App</title>
+
+	<style>
+		@import 'ui/css/style.css';
+	</style>
+
+	<script>
+	// Redirect console.log to Evothings Workbench.
+	if (window.hyper && window.hyper.log) { console.log = hyper.log }
+	</script>	
+
+</head>
+
+<body>
+
+	<header>
+		<button class="back" onclick="history.back()">
+			<img src="res/left.png" />
+		</button>
+
+		<button id='disconnect' class="red small" onclick="/*TODO: disconnect from the connected device*/" disabled>Disconnect</button>
+
+		<img class="logotype" src="ui/images/logo.png" alt="Evothings" />
+	</header>
+
+	<script src="libs/jquery/jquery.js"></script>
+	<script src="cordova.js"></script>
+	<script src="libs/evothings/evothings.js"></script>
+	<script src="libs/evothings/ui/ui.js"></script>
+	<script src="app.js"></script>
+	<script src="buttons.js"></script>
+	<script src="libs/evothings/easyble/easyble.js"></script>
+
+	<!-- START VIEW -->
+	<div id="startView">
+		<h2 style="text-align:center">Robotic Arm Bluetooth</h2>
+		<img class="center" style="width:50%" src="./ui/images/walle.png" alt="robot arm" id='wall-e-img'>
+	
+		<button class="button green" id='start-scan' style='width: 100%;' onclick="/*TODO: start searching for devices*/"> Start </button>
+	</div>
+
+	<!-- CONTROL PANEL -->
+	<div id='controlsView' class='wrapper'style='display: none'>
+
+		<div class='button-group vertical'>
+			<p class='group-title'>Title</p>
+			<div class='data'></div>
+
+			<div class='button'>
+			</div>
+
+			<div class='button'>
+			</div> 
+		</div>
+
+		<divclass='button-group vertical'>
+			<p class='group-title'>Title</p>
+			<div class='data'></div>
+
+			<div class='button'>
+			</div>
+
+			<div class='button'>
+			</div>
+		</div>
+
+		<div id='center' class='center-wrapper'>
+			<div class='button-group'>
+				<div class='title-data-row'>
+					<p class='group-title'>Title</p>
+					<div class='data'></div>
+				</div>
+				<div class='horizontal'>
+					<div class='button'>
+					</div>
+			
+					<div class='button'>
+					</div>
+				</div>
+			</div>
+
+			<div class='button-group'>
+				<div class='title-data-row'>
+					<p class='group-title'>Title</p>
+					<div class='data'></div>
+				</div>
+				<div class='horizontal'>
+					<div class='button'>
+					</div>
+			
+					<div class='button'>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+
+</html>
+ 
