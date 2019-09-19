@@ -3,7 +3,7 @@ if (window.hyper && window.hyper.log) { console.log = hyper.log }
 
 document.addEventListener(
     'deviceready',
-    function() { /*TODO: Add your callback here*/ });
+    function() { console.log('device ready!') });
 
 var app = {
     connected : false,
@@ -12,7 +12,7 @@ var app = {
     CHARACTERISTIC_UUID : "",
 }
 //Our device address is:
-device.address = '4C:24:98:30:46:B8';
+app.address = '4C:24:98:30:46:B8';
 
 app.SERVICE_UUID='0000ffe0-0000-1000-8000-00805f9b34fb';
 app.CHARACTERISTIC_UUID='0000ffe1-0000-1000-8000-00805f9b34fb';
@@ -82,7 +82,7 @@ app.disconnect = function(errorMessage) {
 function scanSuccess(device)
 {
     console.log('Scan successful: Found ' + device.name + " " + device.address);
-    if(device.name != null && device.address == address)
+    if(device.name != null && app.address == device.address)
     {
         console.log('Scan successful: Found' + device.name);
         device.connect(connectSuccess,connectFailure);
