@@ -17,6 +17,11 @@ app.address = '4C:24:98:30:46:B8';
 app.SERVICE_UUID='0000ffe0-0000-1000-8000-00805f9b34fb';
 app.CHARACTERISTIC_UUID='0000ffe1-0000-1000-8000-00805f9b34fb';
 
+var degree1 = 0; // degree value
+var degree2 = 0;
+var degree3 = 0;
+var degree4 = 0;
+
 app.showControls = function()
 {
     $('#disconnect').prop('disabled', false);
@@ -52,7 +57,6 @@ app.initialize = function()
 */
 app.connect = function() {
     console.log('Attempting to connect to bluetooth module');
-    
     evothings.easyble.startScan(scanSuccess,scanFailure, {serviceUUIDS : [app.SERVICE_UUID]}, { allowDuplicates: false});
 }
 
@@ -72,6 +76,7 @@ app.disconnect = function(errorMessage) {
 
     evothings.easyble.stopScan();
     evothings.easyble.closeConnectedDevices();
+    navigator.vibrate(1000);
 }
 
 
@@ -85,8 +90,7 @@ function scanSuccess(device)
     if(device.name != null && app.address == device.address)
     {
         console.log('Scan successful: Found' + device.name);
-        device.connect(connectSuccess,connectFailure);
-        //device.connect(successFunc, failFunc)
+        device.connect(connectSuccess,connectFailure); //device.connect(successFunc, failFunc)
         evothings.easyble.stopScan();
     }
 }
@@ -107,10 +111,10 @@ function scanFailure(errorCode) {
 function connectSuccess(device)
 {
     console.log('Successfully connected!!');
+    navigator.vibrate(250);
     app.connected = true;
     app.device = device; 
     app.device.readServices(serviceSuccess, serviceFailure, [app.SERVICE_UUID]);
-
 }
 
 
@@ -121,6 +125,7 @@ function connectFailure()
 {
     app.connected = false;
     console.log('Failed to connect! :( ');
+    navigator.vibrate(1000);
 }
 
 
@@ -163,10 +168,10 @@ app.sendData = function(data){
             app.CHARACTERISTIC_UUID,
             data,
             function(){
-                console.log("Succeeded to send a message!" + data);
+                console.log("Succeeded to send a message! " + data);
             },
             function(errorCode){
-                console.log("Failed to send a message!" + errorCode);
+                console.log("Failed to send a message! " + errorCode);
             }
         );
     }
@@ -177,13 +182,103 @@ app.sendData = function(data){
 
 
 /*      Functionality:
-    Feedback we receive from the arduino.
+    Feedback we receive from the arduino to confirm that it received our sent data.
 */
 app.receivedData = function(data){
-    if(data === '1'){ // connected to the arduino
+    console.log("Data received from the Arduino: " + data[0]);
+
+    //navigator.vibrate(1000);
+    if(data[0] == 0x31){ // 1 in hexadecimal
         // vibrate phone
+        navigator.vibrate(800); 
     }
-    else if (data === '2') { // Our bluetooth module is found
+    else if (data === '2') { // 
         // do stuff
+    }
+}
+
+
+app.increment = function(data) { // data is the name of the motor to move
+    if (data == "serv1") {
+        app.sendData([5]);
+    }
+    else if (data == "serv2") {
+        app.sendData([7]);
+    }
+    else if (data == "serv3") {
+        app.sendData([9]);
+    }
+    else if (data == "serv4") {
+        app.sendData([11]);
+    }
+    else if (data == "step1") {       // if stepper 1 is called
+        app.sendData([1]);          // send appropriate data to arduino
+    }
+    else if (data == "step2") {
+        app.sendData([3]);
+    }
+}
+
+app.fastIncrement = function(data) { // data is the name of the motor to move
+    if (data == "serv1") {
+        app.sendData([13]);
+    }
+    else if (data == "serv2") {
+        app.sendData([15]);
+    }
+    else if (data == "serv3") {
+        app.sendData([17]);
+    }
+    else if (data == "serv4") {
+        app.sendData([19]);
+    }
+    else if (data == "step1") {       // if stepper 1 is called
+        app.sendData([21]);          // send appropriate data to arduino
+    }
+    else if (data == "step2") {       // stepper 2
+        app.sendData([23]);
+    }
+}
+
+
+app.decrement = function(data) {   // data is the name of the motor to move
+    if (data == "serv1") {           // servo 1 backwards
+        app.sendData([6]);
+    }
+    else if (data == "serv2") {     // servo 2 backwards
+        app.sendData([8]);
+    }
+    else if (data == "serv3") {
+        app.sendData([10]);
+    }
+    else if (data == "serv4") {
+        app.sendData([12]);
+    }
+    else if (data == "step1") {     // stepper 1 backwards
+        app.sendData([2]);
+    }
+    else if (data == "step2") {     // stepper 2 backwards
+        app.sendData([4]);
+    }
+}
+
+app.fastDecrement = function(data) {   // data is the name of the motor to move
+    if (data == "serv1") {           // servo 1 backwards
+        app.sendData([14]);
+    }
+    else if (data == "serv2") {     // servo 2 backwards
+        app.sendData([16]);
+    }
+    else if (data == "serv3") {
+        app.sendData([18]);
+    }
+    else if (data == "serv4") {
+        app.sendData([20]);
+    }
+    else if (data == "step1") {     // stepper 1 backwards
+        app.sendData([22]);
+    }
+    else if (data == "step2") {     // stepper 2 backwards
+        app.sendData([24]);
     }
 }
