@@ -24,16 +24,10 @@ app.showStart = function()
     $('#controlsView').hide();
 }
 
-var bar = document.getElementById('sliderRange');
-var output = document.getElementById('value-display');
-output.innerHTML = bar.value;
-
-function showValue()
-{
-    output.innerHTML = bar.value;
+function upButtonPressed() {
+    console.log('up-button pressed');
 }
 
-// slider.oninput = function()
-// {
-//     output.innerHTML = bar.value;
-// }
+function downButtonPressed() {
+    console.log('down-button pressed');
+}

@@ -49,68 +49,153 @@
 	<!-- CONTROL PANEL -->
 	<div id='controlsView' class='wrapper' >
 
-		<!--This is code Keiran is adding-->
+			<div id='claw' class='control-wrapper'>				
+					<div class='control-body'>
+						<div id='control-title'>
+							<div class='title-name'>
+								<p>Claw</p>
+							</div>
+							<div class='title-picture'>
 
-		<div class='sliderbar'>
-			<input type='range' min='0' max='180' value='90' class='bar' id='sliderRange' oninput='showValue()'>
-			<p>Value: <span id='value-display'></span></p>
-		</div>
-
-		<!--End code that Keiran is adding-->
-		
-		
-		<div class='button-group vertical'>
-			<p class='group-title'>Title</p>
-			<div class='data'></div>
-
-			<div class='button'>
-			</div>
-
-			<div class='button'>
-			</div> 
-		</div>
-
-		<div class='button-group vertical'>
-			<p class='group-title'>Title</p>
-			<div class='data'></div>
-
-			<div class='button'>
-			</div>
-
-			<div class='button'>
-			</div>
-		</div>
-
-		<div id='center' class='center-wrapper'>
-			<div class='button-group'>
-				<div class='title-data-row'>
-					<p class='group-title'>Title</p>
-					<div class='data'></div>
-				</div>
-				<div class='horizontal'>
-					<div class='button'>
+							</div>
+						</div>
+						<div class='servo-body'>
+								<div class='servo-adjust'>
+									<div class='servo-button' id='slider-up' ontouchstart='upButtonPressed()'>
+										<p>Up</p>
+									</div>
+									<div class='servo-button' id='slider-down' ontouchstart='downButtonPressed()' >
+										<p>Down</p>
+									</div>
+								</div>						
+								<div class='servo-adjust'>
+									<div class='servo-button' id='slider-up' ontouchstart='upButtonPressed()'>
+										<p>Up</p>
+									</div>
+									<div class='servo-button' id='slider-down' ontouchstart='downButtonPressed()'>
+										<p>Down</p>
+									</div>
+								</div>
+						</div>
+						<div class='servo-body'>
+								<div class='servo-adjust'>
+									<div class='servo-button' id='slider-up' ontouchstart='upButtonPressed()'>
+										<p>Up</p>
+									</div>
+									<div class='servo-button' id='slider-down' ontouchstart='downButtonPressed()' >
+										<p>Down</p>
+									</div>
+								</div>						
+								<div class='servo-adjust'>
+									<div class='servo-button' id='slider-up' ontouchstart='upButtonPressed()'>
+										<p>Up</p>
+									</div>
+									<div class='servo-button' id='slider-down' ontouchstart='downButtonPressed()'>
+										<p>Down</p>
+									</div>
+								</div>
+						</div>						
 					</div>
-			
-					<div class='button'>
-					</div>
-				</div>
 			</div>
 
-			<div class='button-group'>
-				<div class='title-data-row'>
-					<p class='group-title'>Title</p>
-					<div class='data'></div>
-				</div>
-				<div class='horizontal'>
-					<div class='button'>
-					</div>
-			
-					<div class='button'>
-					</div>
-				</div>
-			</div>
-		</div>
+			<div id='Crane' class='control-wrapper'>				
+					<div class='control-body'>
+						<div id='control-title'>
+							<div class='title-name'>
+								<p>Crane</p>
+							</div>
+							<div class='title-picture'>
 
+							</div>
+						</div>
+						<div class='stepper-body'>
+								
+									<div>
+											<div class='stepper-adjust'>
+											<div class='stepper-button' id='slider-up' ontouchstart='upButtonPressed()'>
+												<p>Out</p>
+											</div>
+											<div class='stepper-button' id='slider-down' ontouchstart='downButtonPressed()' >
+												<p>In</p>
+											</div>
+										</div>						
+										<div class='stepper-adjust'>
+											<div class='stepper-button' id='slider-up' ontouchstart='upButtonPressed()'>
+												<p>Out</p>
+											</div>
+											<div class='stepper-button' id='slider-down' ontouchstart='downButtonPressed()'>
+												<p>In</p>
+											</div>
+										</div>
+									</div>
+						</div>
+					</div>
+			</div>
+
+
+			<div id='arm' class='control-wrapper'>				
+					<div class='control-body'>
+						<div id='control-title'>
+							<div class='title-name'>
+								<p>Lever-Arm</p>
+							</div>
+							<div class='title-picture'>
+
+							</div>
+						</div>
+						<div class='servo-body'>
+								<div class='servo-adjust'>
+									<div class='servo-button' id='slider-up' ontouchstart='upButtonPressed()'>
+										<p>Up</p>
+									</div>
+									<div class='servo-button' id='slider-down' ontouchstart='downButtonPressed()' >
+										<p>Down</p>
+									</div>
+								</div>						
+								<div class='servo-adjust'>
+									<div class='servo-button' id='slider-up' ontouchstart='upButtonPressed()'>
+										<p>Up</p>
+									</div>
+									<div class='servo-button' id='slider-down' ontouchstart='downButtonPressed()'>
+										<p>Down</p>
+									</div>
+								</div>
+						</div>
+					</div>
+			</div>
+
+			<div id='base' class='control-wrapper'>				
+					<div class='control-body'>
+						<div id='control-title'>
+							<div class='title-name'>
+								<p>Base</p>
+							</div>
+							<div class='title-picture'>
+
+							</div>
+						</div>
+						<div class='stepper-body'>
+								<div>
+									<div class='stepper-adjust'>
+									<div class='stepper-button' id='slider-up' ontouchstart='upButtonPressed()'>
+										<p>Left</p>
+									</div>
+									<div class='stepper-button' id='slider-down' ontouchstart='downButtonPressed()' >
+										<p>Right</p>
+									</div>
+								</div>						
+								<div class='stepper-adjust'>
+									<div class='stepper-button' id='slider-up' ontouchstart='upButtonPressed()'>
+										<p>Left</p>
+									</div>
+									<div class='stepper-button' id='slider-down' ontouchstart='downButtonPressed()'>
+										<p>Right</p>
+									</div>
+								</div>
+								</div>								
+						</div>
+					</div>
+			</div>
 	</div>
 
 	<script src="app.js"></script>
