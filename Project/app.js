@@ -85,6 +85,7 @@ app.disconnect = function(errorMessage) {
     evothings.easyble.stopScan();
     evothings.easyble.closeConnectedDevices();
     navigator.vibrate(1000);
+    app.showStart();
 }
 
 
@@ -141,8 +142,9 @@ function connectFailure()
     Allows the bluetooth module to accept inputs.
 */
 function serviceSuccess(device)
-{
+{    
     console.log('The bluetooth module can now read and write');
+    app.showControls();
     app.device.enableNotification(
         app.SERVICE_UUID,
         app.CHARACTERISTIC_UUID,
