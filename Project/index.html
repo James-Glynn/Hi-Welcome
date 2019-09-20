@@ -27,7 +27,7 @@
 			<img src="res/left.png" />
 		</button>
 
-		<button id='disconnect' class="red small" onclick='app.disconnect("Disconnected from device")' >Disconnect</button>
+		<button id='disconnect' class="red small" onclick='app.disconnect("Disconnected from device.")' >Disconnect</button>
 
 		<img class="logotype" src="ui/images/logo.png" alt="Evothings" />
 	</header>
@@ -41,15 +41,36 @@
 	<script src="libs/evothings/easyble/easyble.js"></script>
 
 	<!-- START VIEW -->
-	<div id="startView" style='display: none'>
+	<div id="startView">
 		<h2 style="text-align:center">Robotic Arm Bluetooth</h2>
 		<img class="center" style="width:50%" src="./ui/images/walle.png" alt="robot arm" id='wall-e-img'>
 	
 		<button class="button green" id='start-scan' style='width: 100%' onclick='app.connect()'> Start </button>
+
+		<button class="button orange" id='start-scan' style='width: 100%' onclick='app.fastIncrement("serv1")'> Servo 1 +++ </button>
+		<button class="button blue" id='start-scan' style='width: 100%' onclick='app.increment("serv1")'> Servo 1 + </button>
+		<button class="button blue" id='start-scan' style='width: 100%' onclick='app.decrement("serv1")'> Servo 1 - </button>
+		<button class="button orange" id='start-scan' style='width: 100%' onclick='app.fastDecrement("serv1")'> Servo 1 - - - </button>
+		
+		
+		<button class="button orange" id='start-scan' style='width: 100%' onclick='app.fastIncrement("serv2")'> Servo 2 +++ </button>
+		<button class="button orange" id='start-scan' style='width: 100%' onclick='app.increment("serv2")'> Servo 2 + </button>
+		<button class="button orange" id='start-scan' style='width: 100%' onclick='app.decrement("serv2")'> Servo 2 - </button>
+		<button class="button orange" id='start-scan' style='width: 100%' onclick='app.fastDecrement("serv2")'> Servo 2 - - - </button>
+
+		<button class="button purple" id='start-scan' style='width: 100%' onclick='app.fastIncrement("step1")'> Stepper 1 +++ </button>
+		<button class="button purple" id='start-scan' style='width: 100%' onclick='app.increment("step1")'> Stepper 1 + </button>
+		<button class="button purple" id='start-scan' style='width: 100%' onclick='app.decrement("step1")'> Stepper 1 - </button>		
+		<button class="button purple" id='start-scan' style='width: 100%' onclick='app.fastDecrement("step1")'> Stepper 1 - - - </button>
+
+		<button class="button brown" id='start-scan' style='width: 100%' onclick='app.fastIncrement("step2")'> Stepper 2 +++ </button>
+		<button class="button purple" id='start-scan' style='width: 100%' onclick='app.increment("step2")'> Stepper 2 + </button>
+		<button class="button purple" id='start-scan' style='width: 100%' onclick='app.decrement("step2")'> Stepper 2 - </button>
+		<button class="button brown" id='start-scan' style='width: 100%' onclick='app.fastDecrement("step2")'> Stepper 2 - - - </button>
 	</div>
 
 	<!-- CONTROL PANEL -->
-	<div id='controlsView' class='wrapper' >
+	<div id='controlsView' class='wrapper' style='display: none'>
 
 			<div id='claw' class='control-wrapper'>				
 					<div class='control-body'>
