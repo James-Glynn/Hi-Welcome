@@ -21,14 +21,22 @@ app.showControls = function()
 {
     $('#disconnect').prop('disabled', false);
     $('#startView').hide();
-    $('#controlView').show();
+    $('#controlsView').show();
 }
 
 app.showStart = function()
 {
     $('#disconnect').prop('disabled', true);
     $('#startView').show();
-    $('#controlView').hide();
+    $('#controlsView').hide();
+}
+
+function upButtonPressed() {
+    console.log('up-button pressed');
+}
+
+function downButtonPressed() {
+    console.log('down-button pressed');
 }
 
 

@@ -17,19 +17,111 @@ body {
 	border: 2px solid black;
 }
 
-.vertical {
-	flex-direction: column;
-	width: 40%;
-	height: fit-content;
-}
-
 .horizontal {
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: left;
 	flex-direction: row;
 	width: 100%;
-	height: fit-content;
+	height: 100%;	
 }
+.vertical {
+	flex-direction: column;
+	width: 25%;
+	height: 100%;
+	justify-content: center;
+}
+
+/* Start custom code*/
+
+.control-wrapper {
+	width: 100%;
+	height: fit-content;	
+	border: 2px solid black;
+	display: flex;
+	flex-direction: row;	
+}
+
+.control-body {
+	display: flex;
+	justify-content: left;
+	flex-direction: row;
+	width: 100%;
+	height: 100%;
+}
+
+.control-title {
+	height: 100%;
+	width: 25%;
+	flex-direction: column;
+	justify-content: center;
+	border: 1px solid red;
+}
+
+.crane-body {
+	width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border: 1px solid red;
+}
+
+.servo-body {
+	width: 75%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border: 1px solid red;
+}
+
+.stepper-body {
+	width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border: 1px solid red;
+}
+
+.title-name {
+	align-self: auto;
+	height: 25%;
+	width: 100%;
+	margin: 0px;
+}
+
+.title-picture {
+	height: 75%;
+	width: 100%;
+}
+
+.servo-adjust {	
+	display: flex;
+	flex-direction: column;
+}
+
+.stepper-adjust {
+	display: flex;
+	flex-direction: row;
+}
+
+.servo-button {
+	display: inline-block;
+	width: 50%;
+	height: 40%;
+	margin: auto;	
+	border: 2px solid black;
+	background: transparent;
+}
+
+.stepper-button {
+	display: inline-block;
+	width: 30%;
+	height: 60%;
+	margin: auto;	
+	border: 2px solid black;
+	background: transparent;
+}
+
+/* End custom code */
 
 .group-title {
 	width: 100%;
