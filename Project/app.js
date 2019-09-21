@@ -36,14 +36,25 @@ app.showStart = function()
     $('#controlsView').hide();
 }
 
-function upButtonPressed() {
-    console.log('up-button pressed');
-}
+// var holdTouch;
+// var timer, disableTimer;
+// var minTouchTime = 500;
 
-function downButtonPressed() {
-    console.log('down-button pressed');
-}
+// function checkHoldTouch(callback) {
+//     // if (disableTimer) {
+//     //     // Timer is disabled, don't do anything
+//     //     return;
+//     // }
 
+//     timer = setTimeout(callback, minTouchTime);
+// }
+
+// function cancelHoldTouch() {
+//     if (timer) {
+//         clearTimeout(timer);
+
+//     }    
+// }
 
 //  BEGIN NEW CODE FOR ARDUINO FUNCTIONALITY
 //
@@ -85,6 +96,7 @@ app.disconnect = function(errorMessage) {
     evothings.easyble.stopScan();
     evothings.easyble.closeConnectedDevices();
     navigator.vibrate(1000);
+    app.showStart();
 }
 
 
@@ -141,8 +153,9 @@ function connectFailure()
     Allows the bluetooth module to accept inputs.
 */
 function serviceSuccess(device)
-{
+{    
     console.log('The bluetooth module can now read and write');
+    app.showControls();
     app.device.enableNotification(
         app.SERVICE_UUID,
         app.CHARACTERISTIC_UUID,
@@ -205,25 +218,35 @@ app.receivedData = function(data){
     }
 }
 
+app.cancelInput = function() {
+    app.sendData([0]);
+    console.log('Cancelled motor input !');
+}
 
 app.increment = function(data) { // data is the name of the motor to move
     if (data == "serv1") {
         app.sendData([5]);
+        console.log('Incrementing servo 1 !');
     }
     else if (data == "serv2") {
         app.sendData([7]);
+        console.log('Incrementing servo 2 !');
     }
     else if (data == "serv3") {
         app.sendData([9]);
+        console.log('Incrementing servo 3 !');
     }
     else if (data == "serv4") {
         app.sendData([11]);
+        console.log('Incrementing servo 4 !');
     }
     else if (data == "step1") {       // if stepper 1 is called
         app.sendData([1]);          // send appropriate data to arduino
+        console.log('Incrementing stepper 1 !');
     }
     else if (data == "step2") {
         app.sendData([3]);
+        console.log('Incrementing stepper 1 !');
     }
 }
 
@@ -252,21 +275,27 @@ app.fastIncrement = function(data) { // data is the name of the motor to move
 app.decrement = function(data) {   // data is the name of the motor to move
     if (data == "serv1") {           // servo 1 backwards
         app.sendData([6]);
+        console.log('Decrementing servo 1 !');
     }
     else if (data == "serv2") {     // servo 2 backwards
         app.sendData([8]);
+        console.log('Decrementing servo 2 !');
     }
     else if (data == "serv3") {
         app.sendData([10]);
+        console.log('Decrementing servo 3 !');
     }
     else if (data == "serv4") {
         app.sendData([12]);
+        console.log('Decrementing servo 4 !');
     }
     else if (data == "step1") {     // stepper 1 backwards
         app.sendData([2]);
+        console.log('Decrementing stepper 1 !');
     }
     else if (data == "step2") {     // stepper 2 backwards
         app.sendData([4]);
+        console.log('Decrementing stepper 2 !');
     }
 }
 
