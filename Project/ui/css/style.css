@@ -34,27 +34,48 @@ body {
 
 /* Start custom code*/
 
-h2 {
-	font-weight: bold;
-	color: #ffffff;
-	font-family: Georgia, 'Times New Roman', Times, serif;
-	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+#group-name {	
+	margin-top:10%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
-.button-green {
-margin-top: 65%;
+#startView {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+h2 {
+	margin:0px;
+	font-weight: bold;
+	color: #ffffff;
+	font-family: monospace, 'Liberation Mono';
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 #start-scan {	
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	opacity: .5;
+	filter: alpha(opacity=50);
+}
+
+.button-green {
+	margin-top: 50%;
+	width: 120px;
+	height: 120px;
 	border: 1px solid black;
-	border-radius: 4px;
-	background-color: #6fff9fa1;
-	color: #81ffd9e1;
-	font-family: Georgia, 'Times New Roman', Times, serif;
-	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-	font-size: 2.5vh;
+	border-radius: 60px;
+	background-color: #c3dde0;
+	color: #867ddb;
+	font-family: monospace, 'Liberation Mono';
+	/* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+	font-size: 2.7vh;
 	font-weight: bold;
-	visibility: visible;
+	visibility: visible;	
 }
 
 #controlsView {
@@ -111,7 +132,7 @@ margin-top: 65%;
 	/* align-self: auto; */
 	font-weight: bold;
 	color: #ffffff;
-	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-family: monospace, 'Liberation Mono';
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 	font-size: 3vh;
 	margin: auto;
