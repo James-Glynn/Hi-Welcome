@@ -27,7 +27,7 @@
 			<img src="res/left.png" />
 		</button>
 
-		<button id='disconnect' class="red small" onclick="/*TODO: disconnect from the connected device*/" disabled>Disconnect</button>
+		<button id='disconnect' class="red small" onclick='app.disconnect("Disconnected from device.")' >Disconnect</button>
 
 		<img class="logotype" src="ui/images/logo.png" alt="Evothings" />
 	</header>
@@ -36,74 +36,182 @@
 	<script src="cordova.js"></script>
 	<script src="libs/evothings/evothings.js"></script>
 	<script src="libs/evothings/ui/ui.js"></script>
-	<script src="app.js"></script>
+
 	<script src="buttons.js"></script>
 	<script src="libs/evothings/easyble/easyble.js"></script>
 
 	<!-- START VIEW -->
 	<div id="startView">
-		<h2 style="text-align:center">Robotic Arm Bluetooth</h2>
-		<img class="center" style="width:50%" src="./ui/images/walle.png" alt="robot arm" id='wall-e-img'>
-	
-		<button class="button green" id='start-scan' style='width: 100%;' onclick="/*TODO: start searching for devices*/"> Start </button>
+		<div id='group-name'>
+			<h2 style="text-align:center">Hi, Welcome's</h2>
+			<h2 style="text-align:center">Robotic Grabber</h2>
+		</div>
+		
+		<img class="center" style="width:50%" src="./ui/images/group_image.png" alt="robot arm" id='wall-e-img'>
+		
+		<div id='start-scan'>
+			<button class="button-green" onclick='app.connect()'> Connect </button>
+		</div>
+			
+
+		<!-- <button class="button orange" id='start-scan' style='width: 100%' onclick='app.fastIncrement("serv1")'> Servo 1 +++ </button>
+		<button class="button blue" id='start-scan' style='width: 100%' onclick='app.increment("serv1")'> Servo 1 + </button>
+		<button class="button blue" id='start-scan' style='width: 100%' onclick='app.decrement("serv1")'> Servo 1 - </button>
+		<button class="button orange" id='start-scan' style='width: 100%' onclick='app.fastDecrement("serv1")'> Servo 1 - - - </button>
+		
+		
+		<button class="button orange" id='start-scan' style='width: 100%' onclick='app.fastIncrement("serv2")'> Servo 2 +++ </button>
+		<button class="button orange" id='start-scan' style='width: 100%' onclick='app.increment("serv2")'> Servo 2 + </button>
+		<button class="button orange" id='start-scan' style='width: 100%' onclick='app.decrement("serv2")'> Servo 2 - </button>
+		<button class="button orange" id='start-scan' style='width: 100%' onclick='app.fastDecrement("serv2")'> Servo 2 - - - </button>
+
+		<button class="button purple" id='start-scan' style='width: 100%' onclick='app.fastIncrement("step1")'> Stepper 1 +++ </button>
+		<button class="button purple" id='start-scan' style='width: 100%' onclick='app.increment("step1")'> Stepper 1 + </button>
+		<button class="button purple" id='start-scan' style='width: 100%' onclick='app.decrement("step1")'> Stepper 1 - </button>		
+		<button class="button purple" id='start-scan' style='width: 100%' onclick='app.fastDecrement("step1")'> Stepper 1 - - - </button>
+
+		<button class="button brown" id='start-scan' style='width: 100%' onclick='app.fastIncrement("step2")'> Stepper 2 +++ </button>
+		<button class="button purple" id='start-scan' style='width: 100%' onclick='app.increment("step2")'> Stepper 2 + </button>
+		<button class="button purple" id='start-scan' style='width: 100%' onclick='app.decrement("step2")'> Stepper 2 - </button>
+		<button class="button brown" id='start-scan' style='width: 100%' onclick='app.fastDecrement("step2")'> Stepper 2 - - - </button> -->
 	</div>
 
 	<!-- CONTROL PANEL -->
-	<div id='controlsView' class='wrapper'style='display: none'>
+	<div id='controlsView' class='wrapper' style='display: none'>
 
-		<div class='button-group vertical'>
-			<p class='group-title'>Title</p>
-			<div class='data'></div>
+			<div id='claw' class='control-wrapper'>				
+					<div class='control-body'>
+						<div id='control-title'>
+							<div class='title-name'>
+								<p>Claw</p>
+							</div>
+							<div class='title-picture'>
 
-			<div class='button'>
-			</div>
-
-			<div class='button'>
-			</div> 
-		</div>
-
-		<divclass='button-group vertical'>
-			<p class='group-title'>Title</p>
-			<div class='data'></div>
-
-			<div class='button'>
-			</div>
-
-			<div class='button'>
-			</div>
-		</div>
-
-		<div id='center' class='center-wrapper'>
-			<div class='button-group'>
-				<div class='title-data-row'>
-					<p class='group-title'>Title</p>
-					<div class='data'></div>
-				</div>
-				<div class='horizontal'>
-					<div class='button'>
+							</div>
+						</div>
+						<div class='servo-body'>
+								<div class='servo-adjust'>
+									<div class='servo-button' ontouchstart='app.increment("serv2"); app.increment("serv3")' ontouchend='app.cancelInput()'>
+										<img src='./res/up.png'>
+									</div>
+									<div class='servo-button' ontouchstart='app.decrement("serv2"); app.decrement("serv3")' ontouchEnd='app.cancelInput()'>
+										<img src='./res/down.png'>
+									</div>
+								</div>						
+								<!-- <div class='servo-adjust'>
+									<div class='servo-button' ontouchstart='upButtonPressed()'>
+										<img src='./res/up.png'>
+									</div>
+									<div class='servo-button' ontouchstart='downButtonPressed()'>
+										<img src='./res/down.png'>
+									</div>
+								</div> -->
+						</div>												
 					</div>
-			
-					<div class='button'>
-					</div>
-				</div>
 			</div>
 
-			<div class='button-group'>
-				<div class='title-data-row'>
-					<p class='group-title'>Title</p>
-					<div class='data'></div>
-				</div>
-				<div class='horizontal'>
-					<div class='button'>
-					</div>
-			
-					<div class='button'>
-					</div>
-				</div>
-			</div>
-		</div>
+			<div id='Crane' class='control-wrapper'>				
+					<div class='control-body'>
+						<div id='control-title'>
+							<div class='title-name'>
+								<p>Crane</p>
+							</div>
+							<div class='title-picture'>
 
+							</div>
+						</div>
+						<div class='stepper-body'>								
+									<div>
+											<div class='stepper-adjust'>
+											<div class='stepper-button' ontouchstart='app.decrement("step2")' ontouchend='app.cancelInput()'>
+												<img src='./res/left.png'>												
+											</div>
+											<div class='stepper-button' ontouchstart='app.increment("step2")' ontouchend='app.cancelInput()'>
+												<img src='./res/right.png'>
+											</div>
+										</div>						
+										<!-- <div class='stepper-adjust'>
+											<div class='stepper-button' id='slider-up' ontouchstart='upButtonPressed()'>
+												<img src='./res/left.png'>
+												<img src='./res/left.png'>
+											</div>
+											<div class='stepper-button' id='slider-down' ontouchstart='downButtonPressed()'>
+												<img src='./res/right.png'>
+												<img src='./res/right.png'>
+											</div>
+										</div> -->
+									</div>
+						</div>
+					</div>
+			</div>
+
+
+			<div id='arm' class='control-wrapper'>				
+					<div class='control-body'>
+						<div id='control-title'>
+							<div class='title-name'>
+								<p>Arm</p>
+							</div>
+							<div class='title-picture'>
+
+							</div>
+						</div>
+						<div class='servo-body'>
+								<div class='servo-adjust'>
+									<div class='servo-button' id='servo-up' ontouchstart='app.increment("serv1")' ontouchend='app.cancelInput()'>
+										<img src='./res/up.png'>
+									</div>
+									<div class='servo-button' id='servo-down' ontouchstart='app.decrement("serv1")' ontouchend='app.cancelInput()'>
+										<img src='./res/down.png'>
+									</div>
+								</div>						
+								<!-- <div class='servo-adjust'>
+									<div class='servo-button' id='slider-up' ontouchstart='upButtonPressed()'>
+										<img src='./res/up.png'>
+									</div>
+									<div class='servo-button' id='slider-down' ontouchstart='downButtonPressed()'>
+										<img src='./res/down.png'>
+									</div>
+								</div> -->
+						</div>
+					</div>
+			</div>
+
+			<div id='base' class='control-wrapper'>				
+					<div class='control-body'>
+						<div id='control-title'>
+							<div class='title-name'>
+								<p>Base</p>
+							</div>
+							<div class='title-picture'>
+
+							</div>
+						</div>
+						<div class='stepper-body'>
+								<div>
+									<div class='stepper-adjust'>
+									<div class='stepper-button' id='slider-up' ontouchstart='app.decrement("step1")' ontouchend='app.cancelInput()'>
+										<img src='./res/counter-clockwise.png'>
+									</div>
+									<div class='stepper-button' id='slider-down' ontouchstart='app.increment("step1")' ontouchend='app.cancelInput()'>
+										<img src ='./res/clockwise.png'>
+									</div>
+								</div>						
+								<!-- <div class='stepper-adjust'>
+									<div class='stepper-button' id='slider-up' ontouchstart='upButtonPressed()'>
+										<p>Left</p>
+									</div>
+									<div class='stepper-button' id='slider-down' ontouchstart='downButtonPressed()'>
+										<p>Right</p>
+									</div>
+								</div> -->
+								</div>								
+						</div>
+					</div>
+			</div>
 	</div>
+
+	<script src="app.js"></script>
 </body>
 
 </html>
