@@ -17,10 +17,26 @@ app.address = '4C:24:98:30:46:B8';
 app.SERVICE_UUID='0000ffe0-0000-1000-8000-00805f9b34fb';
 app.CHARACTERISTIC_UUID='0000ffe1-0000-1000-8000-00805f9b34fb';
 
-var degree1 = 0; // degree value
-var degree2 = 0;
-var degree3 = 0;
-var degree4 = 0;
+/*  LONG PRESS FUNCTIONALITY
+var onLongTouch; 
+var timer;
+var touchDuration = 600; //length of time we want the user to touch before we do something
+
+function touchStart() {
+    timer = setTimeout(onLongTouch, touchDuration); 
+}
+
+function touchEnd() {
+    //stops short touches from firing the event
+    if (timer)
+        clearTimeout(timer); // clearTimeout, not cleartimeout..
+}
+
+onLongTouch = function(data){
+    app.sendData([data]);
+}
+// END LONG PRESS FUNCTIONALITY*/
+
 
 app.showControls = function()
 {
@@ -85,6 +101,7 @@ app.disconnect = function(errorMessage) {
     evothings.easyble.stopScan();
     evothings.easyble.closeConnectedDevices();
     navigator.vibrate(1000);
+    //showStart();
 }
 
 
@@ -119,7 +136,6 @@ function scanFailure(errorCode) {
 function connectSuccess(device)
 {
     console.log('Successfully connected!!');
-    navigator.vibrate(250);
     app.connected = true;
     app.device = device; 
     app.device.readServices(serviceSuccess, serviceFailure, [app.SERVICE_UUID]);
@@ -131,17 +147,20 @@ function connectSuccess(device)
 */
 function connectFailure()
 {
-    app.connected = false;
-    console.log('Failed to connect! :( ');
-    navigator.vibrate(1000);
+    app.disconnect('Failed to connect! :(');
+    //app.connected = false;
+    //console.log('Failed to connect! :(');
+    //navigator.vibrate(1000);
+    
 }
 
 
 /*      Functionality:
     Allows the bluetooth module to accept inputs.
 */
-function serviceSuccess(device)
+function serviceSuccess(device, showControls)
 {
+    navigator.vibrate(250);
     console.log('The bluetooth module can now read and write');
     app.device.enableNotification(
         app.SERVICE_UUID,
@@ -153,6 +172,7 @@ function serviceSuccess(device)
         },
         { writeConfigDescriptor: false }
     );
+    //showControls(); 
 }
 
 
