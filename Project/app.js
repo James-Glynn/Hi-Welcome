@@ -17,11 +17,6 @@ app.address = '4C:24:98:30:46:B8';
 app.SERVICE_UUID='0000ffe0-0000-1000-8000-00805f9b34fb';
 app.CHARACTERISTIC_UUID='0000ffe1-0000-1000-8000-00805f9b34fb';
 
-var degree1 = 0; // degree value
-var degree2 = 0;
-var degree3 = 0;
-var degree4 = 0;
-
 app.showControls = function()
 {
     $('#disconnect').prop('disabled', false);
@@ -35,26 +30,6 @@ app.showStart = function()
     $('#startView').show();
     $('#controlsView').hide();
 }
-
-// var holdTouch;
-// var timer, disableTimer;
-// var minTouchTime = 500;
-
-// function checkHoldTouch(callback) {
-//     // if (disableTimer) {
-//     //     // Timer is disabled, don't do anything
-//     //     return;
-//     // }
-
-//     timer = setTimeout(callback, minTouchTime);
-// }
-
-// function cancelHoldTouch() {
-//     if (timer) {
-//         clearTimeout(timer);
-
-//     }    
-// }
 
 //  BEGIN NEW CODE FOR ARDUINO FUNCTIONALITY
 //
@@ -143,9 +118,10 @@ function connectSuccess(device)
 */
 function connectFailure()
 {
-    app.connected = false;
-    console.log('Failed to connect! :( ');
-    navigator.vibrate(1000);
+    app.disconnect('Failed to connect!');
+    //app.connected = false;
+    //console.log('Failed to connect! :( ');
+    //navigator.vibrate(1000);
 }
 
 
@@ -155,7 +131,6 @@ function connectFailure()
 function serviceSuccess(device)
 {    
     console.log('The bluetooth module can now read and write');
-    app.showControls();
     app.device.enableNotification(
         app.SERVICE_UUID,
         app.CHARACTERISTIC_UUID,
@@ -166,6 +141,8 @@ function serviceSuccess(device)
         },
         { writeConfigDescriptor: false }
     );
+    app.showControls();
+    //showControls();
 }
 
 
@@ -174,8 +151,8 @@ function serviceSuccess(device)
     Disconnects device from server.
 */
 function serviceFailure(errorCode){
-    console.log("Failed to read services" + errorCode);
-    app.disconnect(); //disconnect from device
+    //console.log("Failed to read services" + errorCode);
+    app.disconnect('Failed to read services' + errorCode); //disconnect from device
 }
 
 
