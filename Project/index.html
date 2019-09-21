@@ -84,21 +84,21 @@
 						</div>
 						<div class='servo-body'>
 								<div class='servo-adjust'>
-									<div class='servo-button' ontouchstart='upButtonPressed()'>
+									<div class='servo-button' ontouchstart='app.increment("serv2"); app.increment("serv3")' ontouchend='app.cancelInput()'>
 										<img src='./res/up.png'>
 									</div>
-									<div class='servo-button' ontouchstart='downButtonPressed()' >
+									<div class='servo-button' ontouchstart='app.decrement("serv2"); app.decrement("serv3")' ontouchEnd='app.cancelInput()'>
 										<img src='./res/down.png'>
 									</div>
 								</div>						
-								<div class='servo-adjust'>
+								<!-- <div class='servo-adjust'>
 									<div class='servo-button' ontouchstart='upButtonPressed()'>
 										<img src='./res/up.png'>
 									</div>
 									<div class='servo-button' ontouchstart='downButtonPressed()'>
 										<img src='./res/down.png'>
 									</div>
-								</div>
+								</div> -->
 						</div>												
 					</div>
 			</div>
@@ -116,10 +116,10 @@
 						<div class='stepper-body'>								
 									<div>
 											<div class='stepper-adjust'>
-											<div class='stepper-button' ontouchstart='upButtonPressed()'>
+											<div class='stepper-button' ontouchstart='app.decrement("step2")' ontouchend='app.cancelInput()'>
 												<img src='./res/left.png'>												
 											</div>
-											<div class='stepper-button' ontouchstart='downButtonPressed()' >
+											<div class='stepper-button' ontouchstart='app.increment("step2")' ontouchend='app.cancelInput()'>
 												<img src='./res/right.png'>
 											</div>
 										</div>						
@@ -151,10 +151,10 @@
 						</div>
 						<div class='servo-body'>
 								<div class='servo-adjust'>
-									<div class='servo-button' id='servo-up' ontouchstart='upButtonPressed()'>
+									<div class='servo-button' id='servo-up' ontouchstart='app.increment("serv1")' ontouchend='app.cancelInput()'>
 										<img src='./res/up.png'>
 									</div>
-									<div class='servo-button' id='servo-down' ontouchstart='downButtonPressed()' >
+									<div class='servo-button' id='servo-down' ontouchstart='app.decrement("serv1")' ontouchend='app.cancelInput()'>
 										<img src='./res/down.png'>
 									</div>
 								</div>						
@@ -183,10 +183,10 @@
 						<div class='stepper-body'>
 								<div>
 									<div class='stepper-adjust'>
-									<div class='stepper-button' id='slider-up' ontouchstart='upButtonPressed()'>
+									<div class='stepper-button' id='slider-up' ontouchstart='app.decrement("step1")' ontouchend='app.cancelInput()'>
 										<img src='./res/counter-clockwise.png'>
 									</div>
-									<div class='stepper-button' id='slider-down' ontouchstart='downButtonPressed()' >
+									<div class='stepper-button' id='slider-down' ontouchstart='app.increment("step1")' ontouchend='app.cancelInput()'>
 										<img src ='./res/clockwise.png'>
 									</div>
 								</div>						
