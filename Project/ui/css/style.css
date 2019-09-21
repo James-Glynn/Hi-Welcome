@@ -54,6 +54,7 @@ margin-top: 65%;
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 	font-size: 2.5vh;
 	font-weight: bold;
+	visibility: visible;
 }
 
 #controlsView {
@@ -151,6 +152,7 @@ margin-top: 65%;
 	background: transparent;
 	background-color: #b92f1dc0;
 	border-radius: 3px;
+	visibility: visible;
 }
 
 /* #servo-up {
@@ -173,6 +175,7 @@ margin-top: 65%;
 	background: transparent;
 	background-color: #257243da;
 	border-radius: 3px;
+	visibility: visible;
 }
 
 /* End custom code */
