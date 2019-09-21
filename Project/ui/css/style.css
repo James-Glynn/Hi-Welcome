@@ -78,6 +78,13 @@ h2 {
 	visibility: visible;	
 }
 
+.button-green:active {
+	background-color: #a3cfd4;
+	color: #6156c2;
+	opacity: .97;
+	filter: alpha(opacity=97);
+}
+
 #controlsView {
 	background-color: #8bdb8f59
 }
@@ -177,13 +184,10 @@ h2 {
 	filter: alpha(opacity=75);
 }
 
-/* #servo-up {
-	width: 100%;
+.servo-button:active {
+	opacity: .97;
+	filter: alpha(opacity=97);
 }
-
-#servo-down {
-	width: 100%;
-} */
 
 .stepper-button {
 	display: flex;
@@ -199,6 +203,11 @@ h2 {
 	border-radius: 3px;
 	opacity: .75;
 	filter: alpha(opacity=75);
+}
+
+.stepper-button:active {
+	opacity: .97;
+	filter: alpha(opacity=97);
 }
 
 /* End custom code */
